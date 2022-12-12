@@ -2,10 +2,13 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/app_color.dart';
+import 'package:food_app/widgets/app_column.dart';
 import 'package:get/get.dart';
 import 'package:food_app/widgets/big_text_widgets.dart';
 import 'package:food_app/widgets/icon_and_text_widget.dart';
 import 'package:food_app/widgets/small_text_widget.dart';
+
+import '../../utils/screen_dimensions.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
@@ -252,52 +255,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   left: 15,
                   right: 15,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(text: 'Chinese Side'),
-                    SizedBox(
-                      height: ScreenDimension.height10,
-                    ),
-                    Row(children: [
-                      Wrap(
-                        children: List.generate(
-                            5,
-                            (index) => Icon(
-                                  Icons.star,
-                                  color: AppColors.mainColor,
-                                  size: 15,
-                                )),
-                      ),
-                      SizedBox(width: 10),
-                      SmallText(text: '4.5'),
-                      SizedBox(width: 10),
-                      SmallText(text: '1278'),
-                      SizedBox(width: 5),
-                      SmallText(text: 'Comments')
-                    ]),
-                    SizedBox(height: ScreenDimension.height20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconAndTextWidget(
-                          icon: Icons.circle_sharp,
-                          text: 'Normal',
-                          iconColor: AppColors.primaryColor,
-                        ),
-                        IconAndTextWidget(
-                          icon: Icons.location_on,
-                          text: '1.7km',
-                          iconColor: AppColors.mainColor,
-                        ),
-                        IconAndTextWidget(
-                          icon: Icons.access_time_rounded,
-                          text: '3min',
-                          iconColor: AppColors.iconColor2,
-                        ),
-                      ],
-                    ),
-                  ],
+                child: AppColumn(
+                  text: 'Nigerian Fries',
                 ),
               ),
             ),
@@ -306,42 +265,4 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       ),
     );
   }
-}
-
-// Dimension class for the app dimensions
-class ScreenDimension {
-  static double screenHeight = Get.context!.height;
-  static double screenWidth = Get.context!.width;
-
-  static double pageViewContainer = screenHeight / 3.84;
-  static double pageView = screenHeight / 2.64;
-  static double pageViewTextContainer = screenHeight / 7.03;
-
-  // Dynamic height -  padding and margin
-  static double height10 = screenHeight / 84.4;
-  static double height20 = screenHeight / 42.4;
-  static double height15 = screenHeight / 52.27;
-  static double height30 = screenHeight / 28.21;
-  static double height45 = screenHeight / 18.76;
-
-  // Dynamic Width - padding and margin
-  static double width10 = screenHeight / 84.4;
-  static double width20 = screenHeight / 42.4;
-  static double width15 = screenHeight / 52.27;
-  static double width30 = screenHeight / 28.21;
-  static double width45 = screenHeight / 18.76;
-
-  static double font20 = screenHeight / 42.2;
-
-  // radius
-  static double radius15 = screenHeight / 56.27;
-  static double radius20 = screenHeight / 42.2;
-  static double radius30 = screenHeight / 28.13;
-
-  //  icon size
-  static double iconSize24 = screenHeight / 35.17;
-
-  // ListView Size
-  static double listViewImageSize = screenWidth / 3.25;
-  static double listViewTextContainerize = screenWidth / 3.9;
 }

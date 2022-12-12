@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/home/food_page_body.dart';
+import '../utils/screen_dimensions.dart';
 
 class BigText extends StatelessWidget {
   Color? color;
