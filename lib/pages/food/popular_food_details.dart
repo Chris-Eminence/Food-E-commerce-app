@@ -4,6 +4,7 @@ import 'package:food_app/app_color.dart';
 import 'package:food_app/utils/screen_dimensions.dart';
 import 'package:food_app/widgets/app_column.dart';
 import 'package:food_app/widgets/app_icon.dart';
+import 'package:food_app/widgets/expandable_text.dart';
 
 import '../../widgets/big_text_widgets.dart';
 import '../../widgets/icon_and_text_widget.dart';
@@ -16,8 +17,10 @@ class PopularFoodDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
+            // Background Image
             Positioned(
               left: 0,
               right: 0,
@@ -34,6 +37,7 @@ class PopularFoodDetails extends StatelessWidget {
                 ),
               ),
             ),
+            // Two top icons
             Positioned(
               left: ScreenDimension.width20,
               right: ScreenDimension.width20,
@@ -48,29 +52,114 @@ class PopularFoodDetails extends StatelessWidget {
                 ),
               ),
             ),
+            // introduction of food
             Positioned(
               left: 0,
               right: 0,
               bottom: 0,
               top: ScreenDimension.popularFoodImageSize - 30,
               child: Container(
-                  padding: EdgeInsets.only(
-                    left: ScreenDimension.width20,
-                    right: ScreenDimension.width20,
-                    top: ScreenDimension.height20,
+                padding: EdgeInsets.only(
+                  left: ScreenDimension.width20,
+                  right: ScreenDimension.width20,
+                  top: ScreenDimension.height20,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(ScreenDimension.radius20),
+                    topLeft: Radius.circular(ScreenDimension.radius20),
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(ScreenDimension.radius20),
-                      topLeft: Radius.circular(ScreenDimension.radius20),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppColumn(
+                      text: 'Nigerian Fries',
                     ),
-                    color: Colors.white,
-                  ),
-                  child: const AppColumn(
-                    text: 'Nigerian Fries',
-                  )),
-            )
+                    SizedBox(
+                      height: ScreenDimension.height20,
+                    ),
+                    BigText(
+                      text: 'Introduce',
+                    ),
+
+                    SizedBox(height: ScreenDimension.height20),
+                    // Expandable Text Widget
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: const ExpandableText(
+                            text:
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. '),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
+        ),
+        bottomNavigationBar: Container(
+          height: ScreenDimension.bottomBarHeight,
+          padding: EdgeInsets.only(
+            top: ScreenDimension.height30,
+            bottom: ScreenDimension.height30,
+            left: ScreenDimension.width20,
+            right: ScreenDimension.width20,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.buttonBackgrounColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(ScreenDimension.radius20 * 2),
+              topRight: Radius.circular(
+                ScreenDimension.radius20 * 2,
+              ),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(ScreenDimension.radius20),
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.remove,
+                        color: AppColors.signColor,
+                      ),
+                      SizedBox(
+                        width: ScreenDimension.width10 / 2,
+                      ),
+                      BigText(
+                        text: '0',
+                      ),
+                      SizedBox(
+                        width: ScreenDimension.width10 / 2,
+                      ),
+                      Icon(Icons.add, color: AppColors.signColor),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(ScreenDimension.radius20),
+                  color: AppColors.mainColor,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child:
+                      BigText(text: '₦730 | Add to cart', color: Colors.white),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
